@@ -1,0 +1,21 @@
+.aligned-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.aligned-row::before {
+    display: table;
+  }
+
+.col-data-lable {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 2.5px;
+    margin-bottom: 5px;
+}
+
+.col-data-input {
+    padding-left: 2.5px;
+    margin-bottom: 5px;
+}

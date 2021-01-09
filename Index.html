@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>AngularJs Demo With Kendo UI</title>
+        <!--Jquery-->
+        <script src="content/dist/jquery/1.12.3/jquery.min.js"></script>
+        <!--AngularJs-->
+        <script src="content/dist/angular/1.4.8/angular.min.js"></script>
+        <!--Bootstrap-->
+        <script src="content/dist/bootstrap/3.3.7/js/bootstrap.js"></script>
+        <link href="content/dist/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+        <!--/Bootstrap-->
+        <!--Font Awesome-->
+        <link href="content/dist/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
+        <!--/Font Awesome-->
+        <!--Kendo ui Start-->
+        <link rel="stylesheet" href="content/dist/kendo/2016.3.1118/kendo.common-material.min.css" />
+        <link rel="stylesheet" href="content/dist/kendo/2016.3.1118/kendo.material.min.css" />
+        <link rel="stylesheet" href="content/dist/kendo/2016.3.1118/kendo.material.mobile.min.css" />
+        <link rel="stylesheet" href="content/dist/kendo/css/Kendo.custom.css" />
+        <script src="content/dist/kendo/2016.3.1118/kendo.all.min.js"></script>
+        <!--kendo ui end-->
+        <!--Angular Js Code Start-->
+        <script src="app/app.js"></script>
+        <script src="app/controllers/DemoController.js"></script>
+        <!--Angular Js Code End-->
+
+        <link rel="stylesheet" href="content/style.css" />
+    </head>
+<body ng-app="testErp" ng-controller="DemoController" ng-init="Init()">
+    <script id="template" type="text/x-kendo-template">
+        <div style="display: flex;">
+            <input type="text" ng-change="LocalGridSearchCommand()" placeholder="Search Here" ng-model="SearchKey" class="test k-textbox" style="width: 100%;" />
+            <a class="k-button" href="\#" ng-click="RefreshCommand()">Refresh</a>
+        </div>
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-7" style="padding-right: 0px;">
+            <div>
+                
+                <kendo-grid k-toolbar="toolbarTemplate" id="demoDataGrid" k-options="gridOptions" k-data-source="gridDataSource" k-selectable="'row'"
+                                    k-on-change="gridSelectionChange(data, dataItem, columns)"></kendo-grid>
+            </div>
+          </div>
+          <div class="col-md-5" style="padding-left: 0px;">
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="k-header k-grid-toolbar" style="min-height: 53px;
+                    border: 1px solid;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;">
+                        <a class="k-button" href="#" ng-click="NewCommand()">New</a>
+                            <a class="k-button" style="color: white; background-color: #dc3545!important;border-color: #d13141!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Delete</a>
+                            <a class="k-button " style="background-color: #28a745!important;border-color: #239e40!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Save</a>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Username :&nbsp; </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <input kendo-masked-text-box ng-model="User.Username" k-mask="'0000-0000-0'" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Name :&nbsp;  </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <input name="Name" type="text" ng-model="User.Name" class="k-textbox" required style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Type :&nbsp;  </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <select kendo-drop-down-list name="TypeID" id="TypeID" k-ng-model="User.Type" k-options="DropdownOptions" k-value-primitive="true" required style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Birthdate :&nbsp; </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <input id="Brithdate" name="Brithdate" kendo-date-picker onkeydown="return false;" k-ng-model="User.Birthdate" k-options="DatePickerOptions" style="width: 100%;" ng-click="OpenDatePicker('#Brithdate')" />
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Country :&nbsp; </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <input kendo-auto-complete ng-model="country" k-data-source="countryNames" style="width: 100%;" />
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Skills :&nbsp; </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <select kendo-multi-select k-options="selectOptions" k-ng-model="selectedIds" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                <label class="k-label" style="margin-bottom: 0px !important;"> Gender :&nbsp; </label>
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <div>
+                                    <input type="radio" name="gender" id="gender1" class="k-radio" value="Male" ng-model="User.Gender">
+                                    <label class="k-radio-label" for="gender1">Male</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="gender" id="gender2" class="k-radio" value="Female" ng-model="User.Gender">
+                                    <label class="k-radio-label" for="gender2">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row aligned-row">
+                            <div class="col-md-4 col-data-lable">
+                                
+                            </div>
+                            <div class="col-md-8 col-data-input">
+                                <input type="checkbox" id="IsActive" class="k-checkbox" style="margin-top: 5px;" ng-model="User.IsActive">
+                                <label class="k-checkbox-label" for="IsActive" style="margin-top: 5px;"> Is Active?</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+</body>
+</html>

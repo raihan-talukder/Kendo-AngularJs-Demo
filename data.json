@@ -1,0 +1,29 @@
+[
+    {
+        "Id": 1,
+        "Name": "Md. Raihan",
+        "Type": 1,
+        "Birthdate": "1993-08-10T00:00:00Z",
+        "TypeString": "Officer",
+        "IsActive": true,
+        "RoomNo": 6217
+    },
+    {
+        "Id": 2,
+        "Name": "Md. Jahid",
+        "Type": 1,
+        "Birthdate": "1990-10-10T00:00:00Z",
+        "TypeString": "Officer",
+        "IsActive": true,
+        "RoomNo": 6217
+    },
+    {
+        "Id": 3,
+        "Name": "Md. Sadiq",
+        "Type": 2,
+        "Birthdate": "1990-10-10T00:00:00Z",
+        "TypeString": "Student",
+        "IsActive": false,
+        "RoomNo": 6217
+    }
+]

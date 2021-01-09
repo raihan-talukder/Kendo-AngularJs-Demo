@@ -1,0 +1,12 @@
+﻿.k-grid  .k-grid-header  .k-header  .k-link {
+    height: auto;
+}
+  
+.k-grid  .k-grid-header  .k-header {
+    white-space: normal;
+}
+
+.k-radio-label:before {
+    top: 2px !important;
+    left: 2px !important;
+}
