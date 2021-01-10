@@ -150,6 +150,8 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
         $(item).data('kendoDatePicker').open();
     };
 
+
+
     $scope.DropDownData = [
         {
             ID: 1,
@@ -179,6 +181,40 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
             }
         }
     });
+
+    $scope.ComboBoxData = [
+        {
+            ID: 1, Name: "Abdul Zabbar"
+        }, {
+            ID: 2, Name: "Korim Mollah"
+        }, {
+            ID: 3, Name: "Nusrat Jahan"
+        }, {
+            ID: 4, Name: "Sadiqur Rahman"
+        }, {
+            ID: 5, Name: "Mehadi Sayed"
+        }
+    ];
+
+    $scope.ComboBoxDataSource = new kendo.data.DataSource({
+        transport: {
+            read: function (o) {
+                o.success($scope.ComboBoxData);
+            }
+        }
+    });
+
+    $scope.comboBoxOptions = {
+        autoBind: false,
+        dataSource: $scope.ComboBoxDataSource,
+        dataTextField: 'Name',
+        dataValueField: 'ID',
+        filter: 'contains'
+      };
+
+    $scope.comboBoxSelectionChanged = function (){
+
+    };
 
     $scope.selectOptions = {
         placeholder: "Select products...",
