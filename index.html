@@ -39,7 +39,7 @@
         </div>
         <div style="display: flex;">
             <input type="text" ng-change="LocalGridSearchCommand()" placeholder="Search Here" ng-model="SearchKey" class="test k-textbox" style="width: 100%;" />
-            <a class="k-button" href="\#" ng-click="RefreshCommand()">Refresh</a>
+            <a class="k-button" style="margin-left: 5px;" href="\#" ng-click="RefreshCommand()">Refresh</a>
         </div>
     </script>
     <div class="container-fluid h-100">
@@ -54,14 +54,19 @@
           <div class="col-md-5" style="padding-left: 0px;">
               <div class="row">
                   <div class="col-md-12">
-                    <div class="k-header k-grid-toolbar" style="min-height: 53px;
+                    <div class="k-header k-grid-toolbar" style="
+                    min-height: 96px;
                     border: 1px solid;
                     display: flex;
-                    justify-content: flex-start;
-                    align-items: center;">
-                        <a class="k-button" href="#" ng-click="NewCommand()">New</a>
-                            <a class="k-button" style="color: white; background-color: #dc3545!important;border-color: #d13141!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Delete</a>
-                            <a class="k-button " style="color: white; background-color: #28a745!important;border-color: #239e40!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Save</a>
+                    flex-direction: column;
+                    justify-content: space-between;
+                    ">
+                        <div><h5 style="font-weight: 600; text-align: center;">User Information Details</h5></div>
+                        <div style="margin-bottom: -7px;">
+                            <a class="k-button" href="#" ng-click="NewCommand()" style="min-height: 37.7px;">New</a>
+                            <a class="k-button" style="min-height: 37.7px; color: white; background-color: #dc3545!important;border-color: #d13141!important; margin-left: 2px;" href="#" ng-click="RefreshCommand()">Delete</a>
+                            <a class="k-button " style="min-height: 37.7px; color: white; background-color: #28a745!important;border-color: #239e40!important; margin-left: 2px;" href="#" ng-click="RefreshCommand()">Save</a>
+                        </div>
                     </div>
                   </div>
               </div>
