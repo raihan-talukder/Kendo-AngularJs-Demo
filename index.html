@@ -94,7 +94,8 @@
                                 <label class="k-label" style="margin-bottom: 0px !important;"> Type :&nbsp;  </label>
                             </div>
                             <div class="col-md-8 col-data-input">
-                                <select kendo-drop-down-list name="TypeID" id="TypeID" k-ng-model="User.Type" k-options="DropdownOptions" k-value-primitive="true" required style="width: 100%;"></select>
+                                <select kendo-drop-down-list name="TypeID" id="TypeID" k-ng-model="User.Type" k-options="DropdownOptions" k-option-label="' Choose a Product... '"
+                                k-filter="'contains'" k-value-primitive="true" required style="width: 100%;"></select>
                             </div>
                         </div>
                         <div class="row aligned-row">
