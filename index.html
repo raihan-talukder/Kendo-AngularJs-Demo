@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>AngularJs Demo With Kendo UI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <!--Jquery-->
         <script src="content/dist/jquery/1.12.3/jquery.min.js"></script>
         <!--AngularJs-->
@@ -30,15 +31,21 @@
     </head>
 <body ng-app="testErp" ng-controller="DemoController" ng-init="Init()">
     <script id="template" type="text/x-kendo-template">
+        <div style="display: flex;align-items: center;margin-bottom: 5px;">
+            <div>Exam : </div>
+            <div style="flex: 1; padding-left: 2px;">
+                <select kendo-drop-down-list name="ExamID" id="ExamID" k-ng-model="User.Type" k-options="DropdownOptions" k-value-primitive="true" required style="min-width: 250px;"></select>
+            </div>
+        </div>
         <div style="display: flex;">
             <input type="text" ng-change="LocalGridSearchCommand()" placeholder="Search Here" ng-model="SearchKey" class="test k-textbox" style="width: 100%;" />
             <a class="k-button" href="\#" ng-click="RefreshCommand()">Refresh</a>
         </div>
     </script>
-    <div class="container-fluid">
+    <div class="container-fluid h-100">
         <div class="row">
           <div class="col-md-7" style="padding-right: 0px;">
-            <div>
+            <div class="grid-wrapper">
                 
                 <kendo-grid k-toolbar="toolbarTemplate" id="demoDataGrid" k-options="gridOptions" k-data-source="gridDataSource" k-selectable="'row'"
                                     k-on-change="gridSelectionChange(data, dataItem, columns)"></kendo-grid>
@@ -54,7 +61,7 @@
                     align-items: center;">
                         <a class="k-button" href="#" ng-click="NewCommand()">New</a>
                             <a class="k-button" style="color: white; background-color: #dc3545!important;border-color: #d13141!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Delete</a>
-                            <a class="k-button " style="background-color: #28a745!important;border-color: #239e40!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Save</a>
+                            <a class="k-button " style="color: white; background-color: #28a745!important;border-color: #239e40!important; margin-left: 5px;" href="#" ng-click="RefreshCommand()">Save</a>
                     </div>
                   </div>
               </div>
@@ -146,5 +153,24 @@
             </div>
           </div>
         </div>
+
+        <script>
+            // $(window).on("resize", function() {
+            //     kendo.resize($(".k-grid-content"));
+            // });
+        </script>
+        <script type="text/javascript">
+            var gridElement = $("#demoDataGrid");    
+            function resizeGrid() {
+                $("#demoDataGrid .k-grid-content").css("height", $(window).height() - $("#demoDataGrid .k-grid-toolbar").height() - $("#demoDataGrid .k-grid-header").height() - $("#demoDataGrid .k-grid-pager").height() - 35);
+                var a = $("#demoDataGrid").data("kendoGrid");
+                a.resize();
+            }    
+            $(window).resize(function() {
+                resizeGrid();
+            });
+
+            //resizeGrid();
+        </script>
 </body>
 </html>

@@ -76,7 +76,7 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
     $scope.toolbarTemplate = $("#template").html();
 
     $scope.gridOptions = {
-        height: $(window).height() - 120,
+        //height: $(window).height() - 120,
         scrollable: true,
         filterable: true,
         sortable: {
@@ -98,6 +98,10 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
                     break;
                 }
             }
+
+            $("#demoDataGrid .k-grid-content").css("height", $(window).height() - $("#demoDataGrid .k-grid-toolbar").height() - $("#demoDataGrid .k-grid-header").height() - $("#demoDataGrid .k-grid-pager").height() - 35);
+            var a = $("#demoDataGrid").data("kendoGrid");
+            a.resize();
         },
         selectable: true,
         columns:
