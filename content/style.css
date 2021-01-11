@@ -1,3 +1,15 @@
+.data-form {
+    margin-top: 10px;
+}
+
+.tab-panel {
+    padding-left: 0px !important;
+}
+
+.grid-panel {
+    padding-right: 0px !important;
+}
+
 .aligned-row {
     display: flex;
     flex-flow: row wrap;
@@ -20,6 +32,26 @@
     margin-bottom: 5px;
 }
 
+@media (max-width: 991px){
+    .col-data-lable {
+        justify-content: flex-start;
+        align-items: center;
+        padding-right: 15px;
+    }
+
+    .col-data-input {
+        padding-left: 15px;
+    }
+
+    .tab-panel {
+        padding-left: 15px !important;
+    }
+    
+    .grid-panel {
+        padding-right: 15px !important;
+    }
+}
+
 body, html {
     height: 100%;
   }
@@ -27,3 +59,39 @@ body, html {
   .h-100 {
       height: 100%;
   }
+
+  .k-form {
+    border-width: 0px;
+    box-sizing: border-box;
+    font-size: inherit;
+    line-height: 1.42857;
+}
+
+  .k-form-field {
+    margin: 0px 0px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.k-form-field > .k-form-label, .k-form-field > .k-label {
+    margin: 0px 0px 4px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+.k-form-error {
+    color: #db4240;
+}
+
+.k-form-error, .k-form-hint {
+    padding: 4px 0px 0px;
+    margin: 0px 0px 4px;
+    font-size: 12px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.k-form-error {
+    color: #db4240;
+}

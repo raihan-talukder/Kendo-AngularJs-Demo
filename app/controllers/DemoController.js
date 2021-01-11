@@ -113,11 +113,12 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
                     filterable: false
                 }, {
                     field: "Name",
-                    title: "Name"
+                    title: "Name",
+                    width: "100px",
                 }, {
                     field: "TypeString",
                     title: "Type",
-                    width: "100px",
+                    minwidth: "100px"
                 }, {
                     field: "Birthdate",
                     title: "Date",
@@ -126,7 +127,6 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
                 }, {
                     field: "RoomNo",
                     title: "Room No",
-                    width: "100px"
                 }
             ]
     };
@@ -222,21 +222,25 @@ app.controller('DemoController', ['$scope', '$http' , function ($scope, $http) {
 
     $scope.selectOptions = {
         placeholder: "Select products...",
-        dataTextField: "ProductName",
-        dataValueField: "ProductID",
+        dataTextField: "Name",
+        dataValueField: "ID",
         valuePrimitive: true,
         autoBind: false,
         dataSource: {
-            type: "odata",
-            serverFiltering: true,
-            transport: {
-                read: {
-                    url: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
+            transport:  {
+                read: function (o) {
+                    o.success([
+                        { ID: "C", Name: "C" },
+                        { ID: "C++", Name: "C++" },
+                        { ID: "C#", Name: "C#" },
+                        { ID: "Java", Name: "Java" },
+                        { ID: "Asp.Net", Name: "Asp.Net" },
+                    ]);
                 }
             }
         }
     };
-    $scope.selectedIds = [ 4, 7 ];
+    $scope.selectedIds = [ "C", "C#" ];
 
     $scope.Data = [
         {
